@@ -4,6 +4,10 @@ import random
 import string
 import time
 
+create_url = 'http://dummy.restapiexample.com/api/v1/create'
+update_url = 'http://dummy.restapiexample.com/api/v1/update/21'
+get_url = 'http://dummy.restapiexample.com/api/v1/employee/1'
+delete_url = 'http://dummy.restapiexample.com/api/v1/delete/2'
 
 class Employee(object):
     """
@@ -19,6 +23,7 @@ class Employee(object):
         """
         response = request("POST", create_url, json=data)
         assert response.status_code == 200
+        print("print: ",response)
         return response.json()
 
     def update_employee(self, data):

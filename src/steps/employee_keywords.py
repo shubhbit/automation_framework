@@ -24,7 +24,11 @@ def step_impl(context, name, salary, age):
     :param age: age of employee
     :return: None
     """
+    #print("Hi")
+    #k = 9/0
     try:
+        print("Hi")
+        #k = 9/0
         emp_info = {'name': name,
                     'salary': salary,
                     'age': age}
@@ -34,11 +38,12 @@ def step_impl(context, name, salary, age):
         context.input_emp = emp_info
         response = context.emp_obj.register_employee(emp_info)
         context.output_info = response
-        context.emp_obj.compare_emp_info(emp_info, response)
+        emp_mgmt.compare_emp_info(emp_info, response)
         print("created: ", response)
         get_logger(context, _module).debug('Employee registred: ', response)
 
     except Exception as e:
+        raise
         get_logger(context, _module).error('Employee registration failed: ', e)
 
 
@@ -52,7 +57,7 @@ def step_impl(context):
     try:
         emp_mgmt = APICommonFunctions(context)
         response = context.emp_obj.get_employee(context.output_info['id'])
-        context.emp_obj.compare_emp_info(context.output_info, response)
+        emp_mgmt.compare_emp_info(context.output_info, response)
         get_logger(context, _module).debug('Employee is fetched and matched: ', response)
         print("macthed: ", response)
 

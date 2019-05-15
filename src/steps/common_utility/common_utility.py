@@ -3,7 +3,6 @@ import random
 import string
 import logging
 import src.steps.common_utility.helpers as helper
-from dli.client import session
 from enum import Enum
 from datetime import date
 
