@@ -1,12 +1,16 @@
 from requests import request
+import logging
+import random
+import string
+import time
 
 
 class Employee(object):
     """
     Wrapper class to provide functionalities over Employee CRUD operations.
     """
-    def __init__(self):
-        pass
+    def __init__(self, context):
+        self.context = context
 
     def register_employee(self, data):
         """
