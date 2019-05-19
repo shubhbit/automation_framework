@@ -51,12 +51,7 @@ def before_feature(context, feature):
 def after_feature(context, feature):
     context.logger.debug(' ######  Feature end:  %s' % feature.name)
     # Deleting created objects if any
-    context.logger.debug(' ######  cleanup ######')
 
-    if len(context.emp_list) != 0:
-        for i in context.emp_list:
-            context.emp_obj.delete_employee(i['id'])
-            context.logger.debug(' ######  deleted:  {}######'.format(i['id']))
 
 
 def before_scenario(context, scenario):
@@ -64,6 +59,12 @@ def before_scenario(context, scenario):
 
 def after_scenario(context, scenario):
     context.logger.debug(' ######  Scenario end: %s' % scenario.name)
+    context.logger.debug(' ######  cleanup ######')
+
+    if len(context.emp_list) != 0:
+        for i in context.emp_list:
+            context.emp_obj.delete_employee(i['id'])
+            context.logger.debug(' ######  deleted:  {}######'.format(i['id']))
 
 class EnvInterpolation(configparser.BasicInterpolation):
     """Interpolation which expands environment variables in values."""

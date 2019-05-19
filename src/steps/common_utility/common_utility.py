@@ -29,6 +29,10 @@ class APICommonFunctions(object):
 
     def compare_emp_info(self, input_info, output_info):
         try:
-            pass
-        except:
+            for key in input_info.keys():
+                if not (input_info[key] == output_info[key]):
+                    raise Exception('Employee info did not match')
+        except Exception as e:
+            self.get_logger().error("{} {}-> {}".format(e, input_info[key], output_info[key]))
             raise
+

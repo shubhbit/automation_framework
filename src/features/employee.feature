@@ -8,7 +8,7 @@ Feature: Employee CRUD
   @TC-1 @regression
   Scenario: Create an record for new employee
       Given user is logged in
-       When user creates an employee with name as "Shanky" salary as "37373737" and age as "25"
+       When user creates an employee with name as "Randomeeee" salary as "37373737" and age as "25"
        Then user can verify employee is registered
 
   @TC-2 @smoke_ci

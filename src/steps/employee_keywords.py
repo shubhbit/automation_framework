@@ -28,22 +28,20 @@ def step_impl(context, name, salary, age):
         emp_info = {'name': name,
                     'salary': salary,
                     'age': age}
-        print("Employee info: ", emp_info)
         emp_mgmt = APICommonFunctions(context)
         emp_info = emp_mgmt.populate_employee_json(emp_info)
         context.input_emp = emp_info
         response = context.emp_obj.register_employee(emp_info)
         context.output_info = response
         emp_mgmt.compare_emp_info(emp_info, response)
-        print("created: ", response)
-        if not hasattr(context, emp_list):
+        if not hasattr(context, 'emp_list'):
             context.emp_list = []
         context.emp_list.append(response)
-        get_logger(context, _module).debug('Employee registred: ', response)
+        get_logger(context, _module).debug('Employee registred: {}'.format(response))
 
     except Exception as e:
-        raise
         get_logger(context, _module).error('Employee registration failed: ', e)
+        raise
 
 
 @Then('user can verify employee is registered')
@@ -57,11 +55,11 @@ def step_impl(context):
         emp_mgmt = APICommonFunctions(context)
         response = context.emp_obj.get_employee(context.output_info['id'])
         emp_mgmt.compare_emp_info(context.output_info, response)
-        get_logger(context, _module).debug('Employee is fetched and matched: ', response)
-        print("macthed: ", response)
+        get_logger(context, _module).debug('Employee is fetched and matched: {}'.format(response))
 
     except Exception as e:
-        get_logger(context, _module).error('Employee is not fetched or match failed: ', e)
+        get_logger(context, _module).error('Employee is not fetched or match failed: {}'.format(e))
+        raise
 
 
 
