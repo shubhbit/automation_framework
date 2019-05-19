@@ -44,7 +44,7 @@ class Employee(object):
         assert response.status_code == 200
         return response.json()
 
-    def delete_employee(self):
+    def delete_employee(self, id):
         """
         method to delete an existing record
         :return:

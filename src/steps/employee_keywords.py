@@ -24,11 +24,7 @@ def step_impl(context, name, salary, age):
     :param age: age of employee
     :return: None
     """
-    #print("Hi")
-    #k = 9/0
     try:
-        print("Hi")
-        #k = 9/0
         emp_info = {'name': name,
                     'salary': salary,
                     'age': age}
@@ -40,6 +36,9 @@ def step_impl(context, name, salary, age):
         context.output_info = response
         emp_mgmt.compare_emp_info(emp_info, response)
         print("created: ", response)
+        if not hasattr(context, emp_list):
+            context.emp_list = []
+        context.emp_list.append(response)
         get_logger(context, _module).debug('Employee registred: ', response)
 
     except Exception as e:
