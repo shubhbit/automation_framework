@@ -1,4 +1,4 @@
-# automation_framework
+# Generic Test Automation Framework
 this is a repository to demonstrate automation framework using Python and beahve(BDD framework for python)
 
 Tests can be run as below:
